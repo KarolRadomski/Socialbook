@@ -1,0 +1,30 @@
+Warstwa routes (trasowanie) - służy do mapowania adresów URL na konkretne funkcje lub metody kontrolerów API. 
+W tej warstwie definiowane są dostępne endpointy i parametry, jakie można przekazać w żądaniu HTTP. 
+Dzięki temu warstwa routes umożliwia ustalenie, jakie funkcje API są dostępne dla użytkowników i jakie argumenty 
+przyjmują.
+    router.get("/:workoutId", workoutController.getOneWorkout);
+
+
+Warstwa controllers (kontrolery) - to warstwa, która obsługuje żądania HTTP przesłane do endpointów API i 
+koordynuje przetwarzanie danych pomiędzy warstwą routes, a warstwą service. Kontrolery często walidują dane 
+wejściowe, wywołują odpowiednie metody z warstwy service i zwracają odpowiedzi HTTP w postaci JSON lub XML.
+
+    const getOneWorkout = (req, res) => {
+        const workout = workoutService.getOneWorkout();
+        res.send("Get an existing workout");
+    };
+
+
+Warstwa service (serwis) - to warstwa, która zawiera logikę biznesową aplikacji i implementuje operacje na danych. 
+W tej warstwie przetwarzane są dane wejściowe z kontrolerów, wykonują się operacje na bazie danych lub innych 
+źródłach danych, a następnie zwracane są wyniki do kontrolerów, aby były przekazywane z powrotem do użytkownika.
+
+    const getOneWorkout = () => {
+        return;
+    };
+
+
+Warstwa database (baza danych) - to warstwa, która umożliwia przechowywanie i pobieranie danych z bazy danych. 
+W tej warstwie wykonują się operacje CRUD (Create, Read, Update, Delete) na danych, które są wykonywane przez 
+serwisy API. Baza danych może być skonfigurowana zgodnie z modelem relacyjnym lub nierelacyjnym, w zależności 
+od potrzeb aplikacji.
